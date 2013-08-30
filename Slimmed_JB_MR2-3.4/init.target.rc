@@ -33,8 +33,7 @@ on early-init
 
 on fs
     mount_all fstab.qcom
-    setprop ro.crypto.fuse_sdcard true
-
+    
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
@@ -296,20 +295,7 @@ service thermald /system/bin/thermald
    class main
    user root
    group root
-   disabled
-
-service thermal-engine /system/bin/thermal-engine
-   class main
-   user root
-   group root
-   disabled 
-
-on property:qcom.thermal=thermald
-    start thermald
-    
-on property:qcom.thermal=thermal-engine
-    start thermal-engine
-
+   
 service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
     user root
     disabled
