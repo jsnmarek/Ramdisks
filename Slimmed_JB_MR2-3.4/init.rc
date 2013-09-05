@@ -16,7 +16,7 @@ on early-init
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 378000
     # Set init and its forked children's oom_adj.
     write /proc/1/oom_adj -16
-   
+
     # Set the security context for the init process.
     # This should occur before anything else (e.g. ueventd) is started.
     setcon u:r:init:s0
@@ -230,6 +230,7 @@ on post-fs-data
     mkdir /data/misc/bluetooth 0770 system system
     mkdir /data/misc/keystore 0700 keystore keystore
     mkdir /data/misc/keychain 0771 system system
+    mkdir /data/misc/radio 0770 system radio
     mkdir /data/misc/sms 0770 system radio
     mkdir /data/misc/zoneinfo 0775 system system
     mkdir /data/misc/vpn 0770 system vpn
