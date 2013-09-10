@@ -33,7 +33,8 @@ on early-init
 
 on fs
     mount_all fstab.qcom
-    
+    setprop ro.crypto.fuse_sdcard true
+
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
@@ -292,10 +293,10 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     group system camera inet input graphics
 
 #service thermald /system/bin/thermald
-#   class main
-#   user root
-#   group root
-   
+#    class main
+#    user root
+#    group root
+
 #service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
 #    user root
 #    disabled
